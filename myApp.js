@@ -23,6 +23,16 @@ app.get('/body-parsed-info', function(req, res){
 })
 // !
 
+// !
+// * Get Data from POST Requests
+app.post('/name', (req,res)=>{
+   res.json(
+    {echo: req.params.word}
+    );
+})
+// !
+
+// !
 function getCurrentTime(){
   return new Date().toString();
 }
@@ -34,6 +44,7 @@ app.get('/now', (req,res,next)=>{
 }, function(req,res){
   res.json({"time": req.time});
 });
+// !
 
 // * Get Route Parameter Input from the client
 app.get('/:word/echo', (req,res)=>{
