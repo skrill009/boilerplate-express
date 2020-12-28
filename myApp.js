@@ -10,7 +10,7 @@ app.use((req,res,next)=>{
 });
 
 //* Use body-parser to Parse POST Requests
-app.use((req,res)=>{
+app.use((req, res, next)=>{
   bodyParser.urlencoded({extended: false});
   next();
 });
