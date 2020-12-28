@@ -3,18 +3,25 @@ var app = express();
 require('dotenv').config();
 var bodyParser = require('body-parser');
 
+// !
 // * adding a middleware
 app.use((req,res,next)=>{
   console.log(req.method + " " + req.path + " - " + req.ip);
   next();
 });
+// !
 
+// !
 //* Use body-parser to Parse POST Requests
-app.use((req, res, next)=>{
-  bodyParser.urlencoded({extended: false});
-  next();
-});
+app.use(bodyParser.urlencoded({ extended: false }))
 
+//* parse application/json
+app.use(bodyParser.json())
+
+app.get('/body-parsed-info', function(req, res){
+  console.log(bodyParser);
+})
+// !
 
 function getCurrentTime(){
   return new Date().toString();
