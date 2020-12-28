@@ -1,12 +1,20 @@
 var express = require('express');
 var app = express();
 require('dotenv').config();
+var bodyParser = require('body-parser');
 
 // * adding a middleware
 app.use((req,res,next)=>{
   console.log(req.method + " " + req.path + " - " + req.ip);
   next();
 });
+
+//* Use body-parser to Parse POST Requests
+app.use((req,res)=>{
+  bodyParser.urlencoded({extended: false});
+  next();
+});
+
 
 function getCurrentTime(){
   return new Date().toString();
@@ -33,6 +41,7 @@ app.get('/name', (req,res)=>{
     {name: req.query.first + " " + req.query.last}
   )
 });
+
 
 //* sending a message and a file
 app.get("/",(req, res) =>{
