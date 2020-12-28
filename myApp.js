@@ -26,9 +26,9 @@ app.get('/body-parsed-info', function(req, res){
 // !
 // * Get Data from POST Requests
 app.post('/name', (req,res)=>{
-   res.json(
-    {echo: req.params.word}
-    );
+  res.json(
+    {name: req.query.first + " " + req.query.last}
+  )
 })
 // !
 
