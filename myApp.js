@@ -20,12 +20,21 @@ app.get('/now', (req,res,next)=>{
   res.json({"time": req.time});
 });
 
+// * Get Route Parameter Input from the client
 app.get('/:word/echo', (req,res)=>{
   res.json(
     {echo: req.params.word}
     );
 });
 
+//* Get Query Parameter Input from the client
+app.get('/name', (req,res)=>{
+  res.json(
+    {name: req.query.first + " " + req.query.last}
+  )
+});
+
+//* sending a message and a file
 app.get("/",(req, res) =>{
   //*send a message
   //res.send("Hello Express");
@@ -40,6 +49,7 @@ app.get("/",(req, res) =>{
 //   });
 // });
 
+//*serving a json
 app.get("/json", (req,res)=>{
   if(process.env.MESSAGE_STYLE === "uppercase"){
     res.json(
@@ -52,6 +62,7 @@ app.get("/json", (req,res)=>{
   }
 })
 
+//* serve static assets
 app.use(express.static(__dirname + "/public"));
 app.use("/assets", express.static(__dirname + "/public"));
 
