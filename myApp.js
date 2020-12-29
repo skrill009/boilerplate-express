@@ -65,6 +65,7 @@ app.post('/name', (req,res)=>{
 });
 // !
 
+// !
 //* sending a message and a file
 app.get("/",(req, res) =>{
   //*send a message
@@ -72,8 +73,9 @@ app.get("/",(req, res) =>{
   //*send a file 
   res.sendFile(__dirname + "/views/index.html");
 });
+// !
 
-
+// !
 // app.get("/json", (req,res)=>{
 //   res.json({
 //     "message": "Hello json"
@@ -92,6 +94,7 @@ app.get("/json", (req,res)=>{
     )
   }
 })
+// !
 
 //* serve static assets
 app.use(express.static(__dirname + "/public"));
